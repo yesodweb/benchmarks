@@ -1,0 +1,1 @@
+exec ./hyena +RTS -N2
