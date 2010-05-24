@@ -5,10 +5,10 @@ import Data.ByteString.Char8 (ByteString, putStr, pack)
 import Numeric (showInt)
 import "wai" Network.Wai
 import Network.Wai.Enumerator
-import Network.Wai.Handler.SimpleServer
+import Network.Wai.Handler.FastCGI
 import qualified Data.ByteString.Lazy as L
 
-main = run 3000 app
+main = run app
 
 app _ = return $ Response Status200 [(ContentType, "text/html")] $ Right $
             fromLBS content

@@ -3,17 +3,16 @@
 import Prelude hiding (putStr)
 import Data.ByteString.Char8 (ByteString, putStr, pack)
 import Numeric (showInt)
-import "wai" Network.Wai
-import Network.Wai.Enumerator
-import Network.Wai.Handler.SimpleServer
 import qualified Data.ByteString.Lazy as L
+import "fastcgi" Network.FastCGI
+import Network.CGI
 
-main = run 3000 app
+main = runFastCGIConcurrent 5 app
 
-app _ = return $ Response Status200 [(ContentType, "text/html")] $ Right $
-            fromLBS content
+app = do
+    setHeader "Content-Type" "text/html"
+    outputFPS content
 
-content :: L.ByteString
 content = L.fromChunks
       $ "<table>"
       : foldr ($) ["</table>"] (replicate 1000 makeRow)
