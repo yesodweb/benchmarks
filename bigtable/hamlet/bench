@@ -1,5 +1,5 @@
 ab -n 100 -c 20 http://localhost:3000/plain.cgi > results-plain.ab
 sleep 2
-ab -n 100 -c 20 http://localhost:3000/bytestring.cgi > results-bytestring.ab
+ab -n 100 -c 20 http://localhost:3000/bytestring.cgi > results-hamlet-bytestring.ab
 sleep 2
 ab -n 100 -c 20 http://localhost:3000/noenum.cgi > results-noenum.ab
