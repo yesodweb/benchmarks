@@ -1,7 +1,13 @@
-all : bigtable-c.cgi bytestring.cgi hamlet.cgi text.cgi
+all : wai.cgi cgi-package.cgi bigtable-c.cgi bytestring.cgi hamlet.cgi text.cgi
 
 bigtable-c.cgi: bigtable.c
 	gcc -O2 -o bigtable-c.cgi bigtable.c
+
+cgi-package.cgi: cgi-package.hs
+	ghc -O2 --make cgi-package.hs -o cgi-package.cgi
+
+wai.cgi: wai.hs
+	ghc -O2 --make wai.hs -o wai.cgi
 
 bytestring.cgi: bytestring.hs
 	ghc -O2 --make bytestring.hs -o bytestring.cgi

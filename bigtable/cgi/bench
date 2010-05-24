@@ -1,11 +1,18 @@
-ab -n 100 -c 20 http://localhost:3000/bigtable-c.cgi > results-c.ab
+N=1000
+C=200
+ab -n $N -c $C http://localhost:3000/wai.cgi > results-wai.ab
+exit
 sleep 2
-ab -n 100 -c 20 http://localhost:3000/bytestring.cgi > results-bytestring.ab
+ab -n $N -c $C http://localhost:3000/cgi-package.cgi > results-cgi-package.ab
 sleep 2
-ab -n 100 -c 20 http://localhost:3000/hamlet.cgi > results-hamlet.ab
+ab -n $N -c $C http://localhost:3000/bigtable-c.cgi > results-c.ab
 sleep 2
-ab -n 100 -c 20 http://localhost:3000/text.cgi > results-text.ab
+ab -n $N -c $C http://localhost:3000/bytestring.cgi > results-bytestring.ab
 sleep 2
-ab -n 100 -c 20 http://localhost:3000/perl.cgi > results-perl.ab
+ab -n $N -c $C http://localhost:3000/hamlet.cgi > results-hamlet.ab
 sleep 2
-ab -n 100 -c 20 http://localhost:3000/python.cgi > results-python.ab
+ab -n $N -c $C http://localhost:3000/text.cgi > results-text.ab
+sleep 2
+ab -n $N -c $C http://localhost:3000/perl.cgi > results-perl.ab
+sleep 2
+ab -n $N -c $C http://localhost:3000/python.cgi > results-python.ab
