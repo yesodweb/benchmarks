@@ -1,15 +1,21 @@
-N=1000
-C=200
+N=500
+C=100
 ab -n $N -c $C http://localhost:3000/wai.cgi > results-wai.ab
-exit
+sleep 2
+ab -n $N -c $C http://localhost:3000/yesod.cgi > results-yesod.ab
 sleep 2
 ab -n $N -c $C http://localhost:3000/cgi-package.cgi > results-cgi-package.ab
 sleep 2
-ab -n $N -c $C http://localhost:3000/bigtable-c.cgi > results-c.ab
+ab -n $N -c $C http://localhost:3000/hamlet.cgi > results-hamlet.ab
 sleep 2
+exit
 ab -n $N -c $C http://localhost:3000/bytestring.cgi > results-bytestring.ab
 sleep 2
-ab -n $N -c $C http://localhost:3000/hamlet.cgi > results-hamlet.ab
+ab -n $N -c $C http://localhost:3000/string.cgi > results-string.ab
+sleep 2
+ab -n $N -c $C http://localhost:3000/bigtable.html > results-static.ab
+sleep 2
+ab -n $N -c $C http://localhost:3000/bigtable-c.cgi > results-c.ab
 sleep 2
 ab -n $N -c $C http://localhost:3000/text.cgi > results-text.ab
 sleep 2
