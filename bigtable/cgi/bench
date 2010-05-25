@@ -1,6 +1,9 @@
 N=500
 C=100
 ab -n $N -c $C http://localhost:3000/wai.cgi > results-wai.ab
+exit
+sleep 2
+ab -n $N -c $C http://localhost:3000/hack.cgi > results-hack.ab
 sleep 2
 ab -n $N -c $C http://localhost:3000/yesod.cgi > results-yesod.ab
 sleep 2

@@ -1,4 +1,4 @@
-all : string.cgi wai.cgi cgi-package.cgi bigtable-c.cgi bytestring.cgi hamlet.cgi text.cgi yesod.cgi
+all : string.cgi wai.cgi cgi-package.cgi bigtable-c.cgi bytestring.cgi hamlet.cgi text.cgi yesod.cgi hack.cgi
 
 bigtable-c.cgi: bigtable.c
 	gcc -O2 -o bigtable-c.cgi bigtable.c
@@ -23,3 +23,6 @@ string.cgi: string.hs
 
 text.cgi: text.hs
 	ghc -O2 --make text.hs -o text.cgi
+
+hack.cgi: hack.hs
+	ghc -O2 --make hack.hs -o hack.cgi
