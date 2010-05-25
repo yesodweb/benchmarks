@@ -1,0 +1,1 @@
+./simpleserver +RTS -N2
