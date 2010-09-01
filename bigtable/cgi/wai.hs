@@ -10,8 +10,8 @@ import qualified Data.ByteString.Lazy as L
 
 main = run app
 
-app _ = return $ Response Status200 [(ContentType, "text/html")] $ Right $
-            fromLBS content
+app _ = return $ Response status200 [("Content-Type", "text/html")]
+               $ ResponseLBS content
 
 content :: L.ByteString
 content = L.fromChunks

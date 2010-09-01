@@ -1,4 +1,4 @@
-all : string.cgi wai.cgi cgi-package.cgi bigtable-c.cgi bytestring.cgi hamlet.cgi text.cgi yesod.cgi hack.cgi
+all : string.cgi wai.cgi cgi-package.cgi bigtable-c.cgi bytestring.cgi hamlet.cgi text.cgi text-builder.cgi yesod.cgi hack.cgi blaze-builder.cgi
 
 bigtable-c.cgi: bigtable.c
 	gcc -O2 -o bigtable-c.cgi bigtable.c
@@ -24,5 +24,11 @@ string.cgi: string.hs
 text.cgi: text.hs
 	ghc -O2 --make text.hs -o text.cgi
 
+text-builder.cgi: text-builder.hs
+	ghc -O2 --make text-builder.hs -o text-builder.cgi
+
 hack.cgi: hack.hs
 	ghc -O2 --make hack.hs -o hack.cgi
+
+blaze-builder.cgi: blaze-builder.hs
+	ghc -O2 --make blaze-builder.hs -o blaze-builder.cgi

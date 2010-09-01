@@ -1,13 +1,13 @@
 {-# LANGUAGE QuasiQuotes #-}
 import Text.Hamlet
-import Text.Hamlet.Monad
 import Numeric (showInt)
 import Data.Text (pack)
+import qualified Data.ByteString.Lazy as L
 
 main = do
     let rows = replicate 1000 makeRow
     putStrLn "Content-Type: text/html\n"
-    printHamlet undefined [$hamlet|
+    L.putStr $ renderHamlet undefined [$hamlet|
 %table
     $forall rows row
         ^row^
@@ -19,5 +19,5 @@ makeRow = [$hamlet|
         %td $showInt'.col$
 |]
   where
-    showInt' i = Encoded $ pack $ showInt i ""
+    showInt' i = preEscapedString $ showInt i ""
     cols = [1..50]

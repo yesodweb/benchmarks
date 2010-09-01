@@ -57,6 +57,7 @@ getEntryR entryid = do
 $unNicHtml.entryContent.entry$
 |]
 
-withBlog f = withSqlite "test.db3" 1 $ f . Blog
+withBlog f = withSqlite ":memory:" 1 $ \pool -> do
+    f $ Blog pool
 
 main = withBlog $ \blog -> toWaiApp blog >>= run
