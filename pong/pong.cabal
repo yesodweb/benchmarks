@@ -1,0 +1,22 @@
+Name:                pong
+Version:             0.1
+Synopsis:            Pong benchmark
+License:             BSD3
+License-file:        LICENSE
+Author:              Michael Snoyman
+Maintainer:          michael@snoyman.com
+Category:            Web
+Build-type:          Simple
+
+Cabal-version:       >=1.2
+
+
+Executable warp
+  Main-is:             warp.hs
+  Build-depends:       base > 4, wai, warp, blaze-builder
+  Ghc-options:         -O2 -threaded -rtsopts
+
+Executable snap
+  Main-is:             snap.hs
+  Build-depends:       base > 4, snap-server >= 0.3 && < 0.4, snap-core
+  Ghc-options:         -O2 -threaded -rtsopts
