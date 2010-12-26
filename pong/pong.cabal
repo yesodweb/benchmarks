@@ -20,3 +20,8 @@ Executable snap
   Main-is:             snap.hs
   Build-depends:       base > 4, snap-server >= 0.3 && < 0.4, snap-core
   Ghc-options:         -O2 -threaded -rtsopts
+
+Executable yesod
+  Main-is:             yesod.hs
+  Build-depends:       base > 4, yesod-core >= 0.7 && < 0.8, bytestring
+  Ghc-options:         -O2 -threaded -rtsopts
