@@ -1,0 +1,3 @@
+#!/bin/sh
+
+httperf --hog --num-conns 10 --num-calls 10 --burst-length 20 --port 3000 --rate 10 --server localhost --uri /bigtable.html
