@@ -1,1 +1,0 @@
-ab -n 1000 -c 200 http://localhost:3000/ > results.ab

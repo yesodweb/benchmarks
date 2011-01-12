@@ -1,1 +1,0 @@
-ab -n 100 -c 20 http://localhost:3000/ > snap-wai.ab

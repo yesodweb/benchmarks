@@ -1,1 +1,0 @@
-noenum/hamlet.cgi

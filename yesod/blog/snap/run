@@ -1,1 +1,0 @@
-./blog +RTS -A4M -N4 -qg0 -qb -g1
