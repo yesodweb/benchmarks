@@ -9,7 +9,7 @@ import           Snap.Types
 import           Snap.Util.FileServe
 
 site :: Snap ()
-site = fileServe "."
+site = fileServeSingle' "text/plain" "static-file.txt"
 
 main :: IO ()
 main =
