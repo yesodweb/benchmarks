@@ -1,0 +1,56 @@
+Ruby Version | Server | Application
+----------------------------------
+REE          | Passenger Nginx | rack
+MRI 1.9.2    | Unicorn         | rack
+MRI 1.9.2    | Thin            | rack
+MRI 1.9.2    | Goliath         | Goliath
+
+
+# Ruby performance background
+Ruby has traditionally used Rails, which has traditionally been a low performance framework.
+Some of this had to do with the inherent slowness of the original 1.8 MRI Ruby interpreter.
+Much of this has had more to do with sub-optimal deployment and framework architectures.
+Originally Rails was not thread safe, handling only one request at a time, which would block while trying to access the database.
+Additionally, Ruby could not take advantage of multiple processors/cores, bloating the memory required to have multiple copies of the application on each core to achieve concurrency.
+These statements can stil be effectively true in a simple deployment strategy today, largely because development productivity, which has been the focus of Rails, is often much more important than application speed. In addition, it is always conceptually simple to scale a web *application*- just get more application servers- the difficult bottleneck normally comes down to the database.
+The Ruby community has always insisted that performance is not an issue, but has always been constantly searching for higher performance web servers and application stacks.
+
+## Evented Architectures
+Thin is a web server used in production today.
+In the JRuby benchmark linked to in this article it performed better than Passenger or Unicorn on some benchmarks, but worse on others.
+
+[Goliath](https://github.com/postrank-labs/goliath) was just recenty released for Ruby, with the promise of great performance, so we really wanted to test goliath apps. Goliath is a fully evented server and framework focusing on non-blocking I/O- much like node.js, but it uses Ruby fibers to abstract away the evented nature instead of forcing one to write callbacks for every blocking event. Ruby's fibers are not yet performant on jRuby or Rubinius, so we are limiting testing to Ruby 1.9.2 and Ruby Enterprise Edition.
+
+## Forking architectures
+Unicorn and passenger get around Ruby's inherit concurrency weaknesses by using fork.
+The 2 main production deployment options for Ruby are Passenger (apache/nginx module) or Unicorn.
+[Passenger Nginx performs better than Apache](http://snaprails.tumblr.com/post/444462071/passenger-benchmark-on-apache-nginx), so we are leaving out apache.
+
+## JRuby deployment options
+JRuby also has an entirely different set of Java deployment options available that we didn't want to get into.
+Here is [one benchmark](http://torquebox.org/news/2011/02/23/benchmarking-torquebox/?utm_source=rubyweekly&utm_medium=email)
+demonstrating that JRuby deployment options can have superior performance characteristics. Also note that this provides a valid comparison between unicorn/passenger/Thin
+
+## Ruby Interpreter choices
+IronRuby and MacRuby are other alternatives that are usually not the target of a web application deployment.
+As above, we are excluding JRuby and Rubinius.
+
+## Differences between benchmarked and a production setup
+The non-passenger setups would normally have a small additional overhead due to a proxy server that serves static files and provides additional features.
+
+## Ruby framework choices
+A simple Rack application is always going to be faster at a microbenchmark than a framework layered on top of it. In [these benchmakrs](https://github.com/DAddYE/web-frameworks-benchmark/wiki/Achiu) Sinatra is often 2-3x slower than Rack, and Rails is often 3-4x slower than Sinatra.
+Goliath apps *are* a layer on top of Rack.
+
+
+## Benchmark notes
+
+static-file
+  No point in benchmarking static files- everyone uses apache or nginx which have been benchmarked many times before.
+bigtable
+  Use string concatenation (<<) operator for string combining.
+  This avoids continually creating new objects that need to be garbage collected.
+  Normally concatentation is discouraged because it is a mutable operation.
+  The code is written for the benchmark and doesn't represent what is considered best practice.
+pong
+  not much to say here
