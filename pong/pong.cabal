@@ -20,3 +20,8 @@ Executable snap
   Main-is:             snap.hs
   Build-depends:       base > 4, snap-server >= 0.4 && < 0.5, snap-core
   Ghc-options:         -O2 -threaded -rtsopts
+
+Executable happstack
+  Main-is:             happstack.hs
+  Build-depends:       base > 4, happstack-server
+  Ghc-options:         -O2 -threaded -rtsopts
