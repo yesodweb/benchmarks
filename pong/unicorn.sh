@@ -4,6 +4,6 @@ d=$(readlink -f $DIR)
 source lib.sh
 
 rvm use 1.9.2
-unicorn -p 3000 rack.ru &
+unicorn -p 3000 -E production rack.ru &
 
 benchmark

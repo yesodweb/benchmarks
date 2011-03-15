@@ -4,7 +4,7 @@ d=$(readlink -f $DIR)
 source lib.sh
 
 rvm use 1.9.2
-thin -p 3000 -R rack.ru -s 2 start &
+thin -p 3000 -R rack.ru -e production start &
 
 benchmark
 
