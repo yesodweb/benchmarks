@@ -1,0 +1,1 @@
+rm -f ../../pong.war WEB-INF/lib/pong.jar && javac Pong.java -cp ../../winstone-0.9.10.jar && mkdir -p test && cp Pong.class test && mkdir -p WEB-INF/lib && jar cfv WEB-INF/lib/pong.jar test && jar cfv pong.war WEB-INF/ && mv pong.war ../..
