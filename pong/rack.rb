@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rack'
 class RackApp
   def call(env)
-    Rack::Response.new("PONG").finish
+    [200, {} ["PONG"]]
   end
 end
 run RackApp.new

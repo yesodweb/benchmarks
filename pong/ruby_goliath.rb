@@ -1,6 +1,7 @@
+#!/usr/bin/env ruby
 require 'goliath'
 
-class Hello < Goliath::API
+class RubyGoliath < Goliath::API
   def response(env)
     [200, {}, "PONG"]
   end
