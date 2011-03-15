@@ -5,4 +5,7 @@ mkdir -p results
 ./php.sh
 ./tornado.sh
 ./node.sh
-./nginx.sh
+#./nginx.sh
+#./unicorn.sh
+#./thin.sh
+./goliath.sh
