@@ -6,6 +6,4 @@ mkdir -p results
 ./tornado.sh
 ./node.sh
 #./nginx.sh
-#./unicorn.sh
-#./thin.sh
 ./goliath.sh

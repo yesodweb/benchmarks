@@ -11,6 +11,8 @@ source ~/.bashrc
 sudo apt-get install -y libssl-dev libreadline5-dev
 
 rvm install 1.9.2 # ruby-1.9.2-p180 [ x86_64 ]
+gem install goliath thin unicorn
+
 rvm install ree   # ree-1.8.7-2011.03 [ x86_64 ]
 # rvm install rbx # rbx-head (Sat Mar 12 09:05:08 PST 2011)
 
@@ -30,6 +32,14 @@ cd nginx-0.8.54
 sh ./configure --prefix='/opt/nginx' --with-http_ssl_module --add-module='/home/ubuntu/.rvm/gems/ree-1.8.7-2011.03/gems/passenger-3.0.5/ext/nginx'
 sudo make install
 
-# add to nginx config the output of passenger-config --root
-passenger_root /home/ubuntu/.rvm/gems/ree-1.8.7-2011.03/gems/passenger-3.0.5
-# use nginx config as per: http://pastie.org/867442
+# Change config file: /opt/nginx/conf/nginx.conf
+    # use nginx config as per: http://pastie.org/867442
+    #
+    # add to nginx config the output of passenger-config --root
+    passenger_root /home/ubuntu/.rvm/gems/ree-1.8.7-2011.03/gems/passenger-3.0.5
+    # change server config
+    server {
+            root /home/ubuntu/benchmarks/passenger;
+            passenger_enabled on;
+            listen       80;
+    }
