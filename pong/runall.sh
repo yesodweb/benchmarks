@@ -1,4 +1,4 @@
-rmdir -rf results
+rm -rf results
 mkdir -p results
 
 ./snap.sh $*
@@ -7,5 +7,4 @@ mkdir -p results
 ./php.sh
 ./tornado.sh
 ./node.sh
-#./nginx.sh
 ./goliath.sh
