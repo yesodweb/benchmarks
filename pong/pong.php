@@ -1,3 +1,1 @@
-<?
-echo "PONG";
-?>
+PONG

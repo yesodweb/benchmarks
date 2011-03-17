@@ -3,7 +3,7 @@ DIR="$( cd "$( dirname "$0" )" && pwd )"
 d=$(readlink -f $DIR)
 source lib.sh
 
-php-fpm -n
+php-fpm -n -y php-fpm.conf &
 
 sudo /usr/local/nginx/sbin/nginx -c $d/php.nginx.conf &
 
