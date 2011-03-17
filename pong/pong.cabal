@@ -25,3 +25,8 @@ Executable happstack
   Main-is:             happstack.hs
   Build-depends:       base > 4, happstack-server
   Ghc-options:         -O2 -threaded -rtsopts
+
+Executable yesod
+  Main-is:             yesod.hs
+  Build-depends:       base > 4, yesod-core, bytestring
+  Ghc-options:         -O2 -threaded -rtsopts

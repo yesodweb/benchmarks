@@ -1,14 +1,23 @@
-apt-get install -y build-essential libgmp3-dev zlib1g-dev git-core curl httperf libbsd-dev
+#!/bin/bash
+
+# This script is intended to be run on a 64-bit Ubuntu server install or a
+# 64-bit Ubuntu EC2 instance. The command I use to create that instance is:
+
+#    ec2-run-instances ami-cef405a7 -k ec2-keypair -t c1.xlarge
+
+sudo apt-get update
+
+sudo apt-get install -y build-essential libgmp3-dev zlib1g-dev git-core curl httperf libbsd-dev
 
 # Haskell
 
 ## GHC
 cd ~
-wget http://haskell.org/ghc/dist/7.0.2/ghc-7.0.2-i386-unknown-linux.tar.bz2
-tar jxfv ghc-7.0.2-i386-unknown-linux.tar.bz2
+wget http://haskell.org/ghc/dist/7.0.2/ghc-7.0.2-x86_64-unknown-linux.tar.bz2
+tar jxfv ghc-7.0.2-x86_64-unknown-linux.tar.bz2
 cd ghc-7.0.2
 ./configure
-make install
+sudo make install
 
 ## cabal
 cd ~
@@ -18,23 +27,26 @@ cd cabal-install-0.10.2
 sh bootstrap.sh
 
 # nginx (for PHP)
+cd ~
 sudo apt-get install -y libprce3-dev libssl-dev
 wget http://sysoev.ru/nginx/nginx-0.8.54.tar.gz
 tar zxfv nginx-0.8.54.tar.gz
 cd nginx-0.8.54
 ./configure
 make
-make install
+sudo make install
 
 # PHP
-apt-get install -y libxml2-dev
+cd ~
+sudo apt-get install -y libxml2-dev
 wget http://www.php.net/get/php-5.3.5.tar.bz2/from/de.php.net/mirror
 mv mirror php-5.3.5.tar.bz2
 tar jxfv php-5.3.5.tar.bz2
 cd php-5.3.5
 ./configure --enable-fpm
 make all
-sudo groupadd nobody
+sudo make install
+sudo sudo groupadd nobody
 
 # Ruby
 
@@ -49,12 +61,14 @@ rvm use 1.9.2
 gem install goliath
 
 # Python
-apt-get install -y python-setuptools python-pycurl
+sudo apt-get install -y python-setuptools python-pycurl
 
 ## Tornado
 cd ~
-wget --no-check-certficate http://github.com/downloads/facebook/tornado/tornado-1.2.1.tar.gz
+wget http://github.com/downloads/facebook/tornado/tornado-1.2.1.tar.gz --no-check-certficate
 tar zxfv tornado-1.2.1.tar.gz
+cd tornado-1.2.1
+sudo python setup.py install
 
 # node.js
 cd ~
@@ -63,10 +77,10 @@ tar zxfv node-v0.4.2.tar.gz
 cd node-v0.4.2
 ./configure --without-ssl
 make
-make install
+sudo make install
 
 # Java
-apt-get install -y openjdk-6-jre-headless
+sudo apt-get install -y openjdk-6-jre-headless
 
 # libev for Snap
 cd ~
@@ -75,8 +89,8 @@ tar zxfv libev-4.04.tar.gz
 cd libev-4.04
 ./configure
 make
-make install
-ldconfig
+sudo make install
+sudo ldconfig
 
 # Run the benchmarks themselves
 
