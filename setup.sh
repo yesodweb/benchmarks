@@ -93,4 +93,5 @@ ln -s ~/tornado-1.2.1/tornado
 
 ## Run all benchmarks
 ./runall.sh
+./summary.sh
 grep 'Request rate' -rn results/ | sed 's@results/\([^:]*\).*rate: \(.*\) req/s.*@\1 \2@' > results-summary

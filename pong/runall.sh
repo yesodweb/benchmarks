@@ -1,3 +1,4 @@
+rmdir -rf results
 mkdir -p results
 
 ./snap.sh $*

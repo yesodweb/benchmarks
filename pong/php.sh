@@ -5,7 +5,7 @@ source lib.sh
 
 php-fpm -n -y php-fpm.conf &
 
-sudo /usr/local/nginx/sbin/nginx -c $d/php.nginx.conf &
+/usr/local/nginx/sbin/nginx -c $d/php.nginx.conf &
 
 benchmark
 
