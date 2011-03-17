@@ -100,6 +100,6 @@ cd benchmarks/pong
 ln -s ~/tornado-1.2.1/tornado
 
 ## Run all benchmarks
-./runall.sh
+./runall.sh +RTS -A4M -N3
 ./summary.sh
 grep 'Request rate' -rn results/ | sed 's@results/\([^:]*\).*rate: \(.*\) req/s.*@\1 \2@' > results-summary
