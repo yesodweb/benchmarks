@@ -7,7 +7,7 @@
 
 sudo apt-get update
 
-sudo apt-get install -y build-essential libgmp3-dev zlib1g-dev git-core curl httperf libbsd-dev
+sudo apt-get install -y build-essential libgmp3-dev zlib1g-dev git-core curl httperf libbsd-dev libpcre3-dev libssl-dev libxml2-dev python-setuptools python-pycurl openjdk-6-jre-headless
 
 # Haskell
 
@@ -28,7 +28,6 @@ sh bootstrap.sh
 
 # nginx (for PHP)
 cd ~
-sudo apt-get install -y libprce3-dev libssl-dev
 wget http://sysoev.ru/nginx/nginx-0.8.54.tar.gz
 tar zxfv nginx-0.8.54.tar.gz
 cd nginx-0.8.54
@@ -38,7 +37,6 @@ sudo make install
 
 # PHP
 cd ~
-sudo apt-get install -y libxml2-dev
 wget http://www.php.net/get/php-5.3.5.tar.bz2/from/de.php.net/mirror
 mv mirror php-5.3.5.tar.bz2
 tar jxfv php-5.3.5.tar.bz2
@@ -61,11 +59,10 @@ rvm use 1.9.2
 gem install goliath
 
 # Python
-sudo apt-get install -y python-setuptools python-pycurl
 
 ## Tornado
 cd ~
-wget http://github.com/downloads/facebook/tornado/tornado-1.2.1.tar.gz --no-check-certficate
+wget http://github.com/downloads/facebook/tornado/tornado-1.2.1.tar.gz --no-check-certificate
 tar zxfv tornado-1.2.1.tar.gz
 cd tornado-1.2.1
 sudo python setup.py install
@@ -78,9 +75,6 @@ cd node-v0.4.2
 ./configure --without-ssl
 make
 sudo make install
-
-# Java
-sudo apt-get install -y openjdk-6-jre-headless
 
 # libev for Snap
 cd ~
