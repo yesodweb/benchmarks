@@ -4,6 +4,7 @@ import Network.Wai.Handler.Warp
 import Blaze.ByteString.Builder (copyByteString, fromLazyByteString, toLazyByteString)
 import Blaze.ByteString.Builder.Char8 (fromShow)
 import Data.Monoid (mappend, mempty)
+import Network.HTTP.Types (status200)
 
 main = run 3000 $ const $ return $ ResponseBuilder
     status200

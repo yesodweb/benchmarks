@@ -2,6 +2,7 @@
 import Network.Wai
 import Network.Wai.Handler.Warp
 import Blaze.ByteString.Builder (fromByteString)
+import Network.HTTP.Types (status200)
 
 main = run 3000 $ const $ return $ ResponseBuilder
     status200
