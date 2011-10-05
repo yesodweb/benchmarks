@@ -90,7 +90,7 @@ sudo ldconfig
 
 ## Compile Haskell code
 cd ~
-git clone https://github.com/snoyberg/benchmarks.git
+git clone https://github.com/yesodweb/benchmarks.git
 cd benchmarks/pong
 ~/.cabal/bin/cabal update
 ~/.cabal/bin/cabal install snap-server -flibev
