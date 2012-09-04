@@ -10,7 +10,8 @@ mkYesod "Pong" [parseRoutes|
 / PongR GET
 |]
 
-instance Yesod Pong
+instance Yesod Pong where
+    makeSessionBackend _ = return Nothing
 
 getPongR = return $ RepPlain $ toContent ("PONG" :: ByteString)
 

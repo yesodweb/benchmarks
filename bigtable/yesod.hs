@@ -18,7 +18,8 @@ mkYesod "Pong"
 #endif
 /bigtable.html PongR GET
 |]
-instance Yesod Pong
+instance Yesod Pong where
+    makeSessionBackend _ = return Nothing
 
 getPongR = return $ RepHtml $ ContentBuilder table Nothing
 
