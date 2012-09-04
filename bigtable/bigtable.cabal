@@ -13,7 +13,7 @@ Cabal-version:       >=1.2
 
 Executable warp
   Main-is:             warp.hs
-  Build-depends:       base > 4, wai, warp, blaze-builder
+  Build-depends:       base > 4, wai, warp, blaze-builder, http-types >= 0.7
   Ghc-options:         -O2 -threaded -rtsopts
 
 Executable snap
@@ -23,5 +23,5 @@ Executable snap
 
 Executable yesod
   Main-is:             yesod.hs
-  Build-depends:       base > 4, yesod-core >= 0.7 && < 0.8, bytestring
+  Build-depends:       base > 4, yesod-core >= 1, bytestring
   Ghc-options:         -O2 -threaded -rtsopts

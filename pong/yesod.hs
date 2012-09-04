@@ -6,13 +6,12 @@ import Data.ByteString (ByteString)
 import Network.Wai.Handler.Warp (run)
 
 data Pong = Pong
-mkYesod "Pong" [$parseRoutes|
+mkYesod "Pong" [parseRoutes|
 / PongR GET
 |]
 
 instance Yesod Pong where
-    approot _ = ""
-    encryptKey _ = return Nothing
+    makeSessionBackend _ = return Nothing
 
 getPongR = return $ RepPlain $ toContent ("PONG" :: ByteString)
 

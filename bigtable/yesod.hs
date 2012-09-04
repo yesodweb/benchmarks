@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings, QuasiQuotes, TypeFamilies, CPP #-}
+{-# LANGUAGE OverloadedStrings, QuasiQuotes, TypeFamilies, CPP, TemplateHaskell, MultiParamTypeClasses #-}
 import Yesod.Dispatch
 import Yesod.Core
 import Yesod.Content
@@ -19,8 +19,8 @@ mkYesod "Pong"
 /bigtable.html PongR GET
 |]
 instance Yesod Pong where
-    approot _ = ""
-    encryptKey _ = return Nothing
+    makeSessionBackend _ = return Nothing
+
 getPongR = return $ RepHtml $ ContentBuilder table Nothing
 
 main = toWaiAppPlain Pong >>= run 3000
