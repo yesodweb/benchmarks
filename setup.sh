@@ -7,7 +7,7 @@
 
 sudo apt-get update
 
-sudo apt-get install -y build-essential libgmp3-dev zlib1g-dev git-core curl httperf libbsd-dev libpcre3-dev libssl-dev libxml2-dev python-setuptools python-pycurl openjdk-6-jre-headless
+sudo apt-get install -y build-essential libgmp3-dev zlib1g-dev git-core curl httperf libbsd-dev libpcre3-dev libssl-dev libxml2-dev python-setuptools python-pycurl openjdk-6-jre-headless libncurses-dev
 
 # Haskell
 
@@ -86,12 +86,27 @@ make
 sudo make install
 sudo ldconfig
 
+# Erlang/OTP
+cd ~
+wget http://www.erlang.org/download/otp_src_R15B02.tar.gz
+tar xzf otp_src_R15B02.tar.gz
+cd otp_src_R15B02
+./configure --enable-hipe
+sudo make install
+
+
 # Run the benchmarks themselves
 
-## Compile Haskell code
+## Fetch benchmarks repo
 cd ~
 git clone https://github.com/yesodweb/benchmarks.git
-cd benchmarks/pong
+
+## Build Erlang code
+cd ~/benchmarks/pong/erlang
+./rebar get-deps compile generate -f
+
+## Compile Haskell code
+cd ~/benchmarks/pong
 ~/.cabal/bin/cabal update
 ~/.cabal/bin/cabal install snap-server -flibev
 ~/.cabal/bin/cabal install
