@@ -7,7 +7,7 @@
 
 sudo apt-get update
 
-sudo apt-get install -y build-essential libgmp3-dev zlib1g-dev git-core curl httperf libbsd-dev libpcre3-dev libssl-dev libxml2-dev python-setuptools python-pycurl openjdk-6-jre-headless libncurses-dev
+sudo apt-get install -y build-essential libgmp3-dev zlib1g-dev git-core curl httperf libbsd-dev libpcre3-dev openssl libssl-dev libxml2-dev python-setuptools python-pycurl openjdk-6-jre-headless libncurses5-dev
 
 # Haskell
 
@@ -91,8 +91,7 @@ cd ~
 wget http://www.erlang.org/download/otp_src_R15B02.tar.gz
 tar xzf otp_src_R15B02.tar.gz
 cd otp_src_R15B02
-./configure --enable-hipe
-sudo make install
+./configure && make && sudo make install
 
 
 # Run the benchmarks themselves
