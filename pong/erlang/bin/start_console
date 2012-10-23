@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SCRIPTDIR=$(dirname $0)
+cd "$SCRIPTDIR/.."
+
+erl -pa deps/*/ebin apps/*/ebin \
+    -boot start_sasl \
+    -args_file rel/files/vm.args \
+    -s elli_pong \
+    -config rel/files/app

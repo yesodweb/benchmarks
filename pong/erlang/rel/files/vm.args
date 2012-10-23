@@ -1,0 +1,16 @@
+## Name of the node
+-sname elli_pong
+
+## Cookie for distributed erlang
+-setcookie elli_pong
+
+## Heartbeat management; auto-restarts VM if it dies or becomes unresponsive
+## (Disabled by default..use with caution!)
+##-heart
+
+## increase the maximum number of allowed processes inside the VM
++P 200000
+
+## Enable kernel poll and a async threads
++K true
++A 2

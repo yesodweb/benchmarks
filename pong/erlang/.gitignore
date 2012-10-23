@@ -1,0 +1,7 @@
+*.dump
+*.beam
+.eunit
+deps
+ebin
+log
+/rel/elli_pong

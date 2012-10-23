@@ -1,0 +1,14 @@
+{application, elli_pong,
+ [
+  {description, "Pong benchmark for the Elli webserver"},
+  {vsn, "0.0.1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  sasl
+                 ]},
+  {mod, {elli_pong, []}},
+  {env, []}
+ ]
+}.

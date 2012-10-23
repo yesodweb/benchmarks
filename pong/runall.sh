@@ -5,6 +5,7 @@ mkdir -p results
 ./warp.sh $*
 ./happstack.sh $*
 ./yesod.sh $*
+./elli.sh
 sudo ./php.sh
 ./tornado.sh
 ./node.sh
